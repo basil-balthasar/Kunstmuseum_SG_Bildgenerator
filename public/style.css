@@ -2,24 +2,3 @@ body {
     margin: 0;
     padding: 0;
 }
-
-img{
-    display: block;
-    position: absolute;
-}
-
-#zero {
-    width: 150px;
-    height: auto;
-    margin: 100px 200px;
-}
-
-#one {
-    width: 100px;
-    height: auto;
-}
-
-#two {
-    width: 50px;
-    height: auto;
-}
