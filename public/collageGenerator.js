@@ -71,7 +71,6 @@ function drawFg(){
 
 function drawLayerOne(){
   push()
-    blendMode(layerOne.blendMode)
     translate(layerOne.position[0], layerOne.position[1])
     rotate(layerOne.rotation)
     image(layerOne.image, -layerOne.image.width*layerOne.scale/2, -layerOne.image.width*layerOne.scale*layerOne.ar/2, layerOne.image.width*layerOne.scale, layerOne.image.width*layerOne.scale*layerOne.ar)

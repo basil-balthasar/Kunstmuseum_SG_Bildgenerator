@@ -11,10 +11,6 @@ let layerThree
 
 //get data from io sockets
 function getData(data){
-    const dataPacks = data.split("|")
-    let moduleValues = []
-    for(let m = 0; m<modules.length; m++){
-        moduleValues[m] = dataPacks.split(",")
-    }
+    const values = data.split(",")
     print(moduleValues[0][1])
 }
