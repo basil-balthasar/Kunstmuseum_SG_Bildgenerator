@@ -12,5 +12,5 @@ let layerThree
 //get data from io sockets
 function getData(data){
     const values = data.split(",")
-    print(moduleValues[0][1])
+    print(values[1])
 }
