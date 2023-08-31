@@ -1,11 +1,13 @@
+let layerZOrder = [0, 1, 2, 3]
+
 //background values
-let backgroundImageOn = false
-let backgroundImage
-let backgroundImagePosition
-let backgroundImageScale
 let backgroundColor = [200, 0, 255]
 
-let layerZOrder = [0, 1, 2, 3]
+let myBackground
+let foreground
+let layerOne
+let layerTwo
+let layerThree
 
 //get data from io sockets
 function getData(data){

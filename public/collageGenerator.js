@@ -16,6 +16,11 @@ function setup(){
 
     //general setups
     angleMode(DEGREES)
+    myBackground = new ImageObject(true, backgroundImages[0], [0,0], 1, 0)
+    foreground = new ImageObject(false, foregroundImages[0], [0,0], 1, 0)
+    layerOne = new ImageObject(false, layerOneImages[0], [100,100], 0.1, 45)
+    layerTwo = new ImageObject(false, layerTwoImages[0], [0,0], 1, 0)
+    layerThree = new ImageObject(false, layerThreeImages[0], [0,0], 1, 0)
 }
 
 function windowResized() {
@@ -25,8 +30,8 @@ function windowResized() {
 function draw(){
   clear()
   //background
-  if(backgroundImageOn == true){
-    //draw background image
+  if(myBackground.isOn == true){
+    image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.width/myBackground.scale, myBackground.image.width/myBackground.scale*myBackground.ar, COVER, LEFT, TOP)
   }else{
     background(backgroundColor, 255)
   }
@@ -35,7 +40,9 @@ function draw(){
   for(let l = 0; l<4; l++){
     switch(layerZOrder[l]){
       case 0:
-        drawVg()
+        if(foreground.isOn == true){
+          drawFg()
+        }
         break;
       case 1:
         drawLayerOne()
@@ -50,16 +57,19 @@ function draw(){
   }
 }
 
-function drawVg(){
-
+function drawFg(){
 }
 
 function drawLayerOne(){
-
+  push()
+    translate(layerOne.position[0], layerOne.position[1])
+    rotate(layerOne.rotation)
+    image(layerOne.image, -layerOne.image.width*layerOne.scale/2, -layerOne.image.width*layerOne.scale*layerOne.ar/2, layerOne.image.width*layerOne.scale, layerOne.image.width*layerOne.scale*layerOne.ar)
+  pop()  
 }
 
 function drawLayerTwo(){
-
+  
 }
 
 function drawLayerThree(){
