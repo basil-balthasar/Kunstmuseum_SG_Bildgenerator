@@ -8,12 +8,13 @@ let layerTwoImages = []
 let layerThreeImages = []
 
 //construct image object
-function ImageObject(isOn, image, position, scale, rotation){
+function ImageObject(isOn, image, position, scale, rotation, blendMode){
     this.isOn = isOn
     this.image = image
     this.position = position
     this.scale = scale
     this.rotation = rotation
+    this.blendMode = blendMode
     if(this.image!=undefined){
         this.ar = this.image.height/this.image.width
     }

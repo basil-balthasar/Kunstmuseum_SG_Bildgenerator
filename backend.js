@@ -1,5 +1,5 @@
 //Debug optional use without serial connection
-let useSerial = false;
+let useSerial = true;
 
 //server requirements
 var http = require('http');
@@ -14,7 +14,7 @@ const parser = new ReadlineParser({ delimeter: "\r\n" });
 //open serialport
 if(useSerial == true){
     const port = new SerialPort.SerialPort({
-        path: "/dev/cu.usbserial-110",
+        path: "/dev/cu.usbmodem139735901",
         baudRate: 9600,
         dataBits: 8,
         parity: "none",

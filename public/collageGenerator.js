@@ -1,7 +1,9 @@
 //canvas infos
 let cnv
-let cnvX = 300
-let cnvY = 400
+let cnvX = 400
+let cnvY = 600
+
+let blendModes
 
 function setup(){
     //setup io socket connection
@@ -16,9 +18,10 @@ function setup(){
 
     //general setups
     angleMode(DEGREES)
+    blendModes = [BLEND]
     myBackground = new ImageObject(true, backgroundImages[0], [0,0], 1, 0)
     foreground = new ImageObject(false, foregroundImages[0], [0,0], 1, 0)
-    layerOne = new ImageObject(false, layerOneImages[0], [100,100], 0.1, 45)
+    layerOne = new ImageObject(true, layerOneImages[0], [100,100], 0.1, 45)
     layerTwo = new ImageObject(false, layerTwoImages[0], [0,0], 1, 0)
     layerThree = new ImageObject(false, layerThreeImages[0], [0,0], 1, 0)
 }
@@ -45,13 +48,19 @@ function draw(){
         }
         break;
       case 1:
-        drawLayerOne()
+        if(layerOne.isOn == true){
+          drawLayerOne()
+        }
         break;
       case 2:
-        drawLayerTwo()
+        if(layerTwo.isOn == true){
+          drawLayerTwo()
+        }
         break;
       case 3:
-        drawLayerThree()
+        if(layerThree.isOn == true){
+          drawLayerThree()
+        }
         break;      
     }
   }
@@ -62,9 +71,11 @@ function drawFg(){
 
 function drawLayerOne(){
   push()
+    blendMode(layerOne.blendMode)
     translate(layerOne.position[0], layerOne.position[1])
     rotate(layerOne.rotation)
     image(layerOne.image, -layerOne.image.width*layerOne.scale/2, -layerOne.image.width*layerOne.scale*layerOne.ar/2, layerOne.image.width*layerOne.scale, layerOne.image.width*layerOne.scale*layerOne.ar)
+    blendMode(BLEND)
   pop()  
 }
 
