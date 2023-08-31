@@ -1,4 +1,4 @@
-let numberOfImages = [1, 0, 1, 0, 0]
+let numberOfImages = [1, 0, 1, 1, 1]
 
 //image arrays
 let backgroundImages = []
