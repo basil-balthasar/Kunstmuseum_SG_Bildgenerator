@@ -1,3 +1,6 @@
+//Debug optional use without serial connection
+let useSerial = false;
+
 //server requirements
 var http = require('http');
 var express = require("express");
@@ -9,15 +12,17 @@ const parsers = SerialPort.parsers;
 const parser = new ReadlineParser({ delimeter: "\r\n" });
 
 //open serialport
-const port = new SerialPort.SerialPort({
-  path: "/dev/cu.usbserial-110",
-  baudRate: 9600,
-  dataBits: 8,
-  parity: "none",
-  stopBits: 1,
-  flowControl: false,
-});
-port.pipe(parser);
+if(useSerial == true){
+    const port = new SerialPort.SerialPort({
+        path: "/dev/cu.usbserial-110",
+        baudRate: 9600,
+        dataBits: 8,
+        parity: "none",
+        stopBits: 1,
+        flowControl: false,
+    });
+    port.pipe(parser);
+}
 
 //open server on localhost
 var app = express();
@@ -32,7 +37,9 @@ function newConnection(socket){
 }
 
 //send serial data over io socket
-parser.on('data', function(data) {  
-    console.log('Received data from port: ' + data);
-    io.sockets.emit('data', data);
-});
+if(useSerial == true){
+    parser.on('data', function(data) {  
+        console.log('Received data from port: ' + data);
+        io.sockets.emit('data', data);
+    });
+}
