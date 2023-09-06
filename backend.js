@@ -1,5 +1,5 @@
 //Debug optional use without serial connection
-let useSerial = true;
+let useSerial = false;
 
 //server requirements
 var http = require('http');
