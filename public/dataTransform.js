@@ -22,3 +22,11 @@ function joystickToPosition(joystick, position){
     position[0] = Math.min(Math.max(position[0]+=joystickInput[0]*joystickSpeed*deltaTime, 0), cnvX);
     position[1] = Math.min(Math.max(position[1]+=joystickInput[1]*joystickSpeed*deltaTime, 0), cnvY);
 }
+
+function checkForSave(){
+    let newImageID = parseInt(localStorage.getItem("lastImageID"))
+    if(newImageID != undefined){
+        newImageID++
+        localStorage.setItem("lastImageID", (newImageID).toString())
+    }else localStorage.setItem("lastImageID", "0")
+}

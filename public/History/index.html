@@ -3,7 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Collage History</title>
   </head>
-  <body></body>
+  <body>
+    <style>
+      body {
+        padding: 0px;
+        margin: 0px;
+      }
+    </style>
+    <img id="lastImage" src="SavedImages/0.png" alt="test collage" />
+    <script>
+      console.log(localStorage.getItem("lastImageID"));
+    </script>
+  </body>
 </html>

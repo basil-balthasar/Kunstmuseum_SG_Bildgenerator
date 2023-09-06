@@ -87,3 +87,7 @@ function drawLayerTwo(){
 function drawLayerThree(){
 
 }
+
+function mousePressed(){
+  checkForSave()
+}
