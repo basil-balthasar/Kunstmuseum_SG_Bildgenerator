@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Collage History</title>
+    <script src="https://openprocessing.org/openprocessing_sketch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
   </head>
   <body>
     <style>
@@ -13,8 +15,12 @@
       }
     </style>
     <img id="lastImage" src="SavedImages/0.png" alt="test collage" />
+
     <script>
-      console.log(localStorage.getItem("lastImageID"));
+      function update() {
+        document.getElementById("lastImage").src =
+          "SavedImages/" + (currentImageID % 1) + ".png";
+      }
     </script>
   </body>
 </html>

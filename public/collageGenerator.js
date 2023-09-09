@@ -32,8 +32,6 @@ function windowResized() {
 
 function draw(){
   clear()
-
-  joystickToPosition([1,0,0,1], layerOne.position)
   //background
   if(myBackground.isOn == true){
     image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.width/myBackground.scale, myBackground.image.width/myBackground.scale*myBackground.ar, COVER, LEFT, TOP)
@@ -73,6 +71,7 @@ function drawFg(){
 
 function drawLayerOne(){
   push()
+    blendMode(layerOne.blendMode)
     translate(layerOne.position[0], layerOne.position[1])
     rotate(layerOne.rotation)
     image(layerOne.image, -layerOne.image.width*layerOne.scale/2, -layerOne.image.width*layerOne.scale*layerOne.ar/2, layerOne.image.width*layerOne.scale, layerOne.image.width*layerOne.scale*layerOne.ar)
@@ -81,13 +80,21 @@ function drawLayerOne(){
 }
 
 function drawLayerTwo(){
-  
+  push()
+    blendMode(layerTwo.blendMode)
+    translate(layerTwo.position[0], layerTwo.position[1])
+    rotate(layerTwo.rotation)
+    image(layerTwo.image, -layerTwo.image.width*layerTwo.scale/2, -layerTwo.image.width*layerTwo.scale*layerTwo.ar/2, layerTwo.image.width*layerTwo.scale, layerTwo.image.width*layerTwo.scale*layerTwo.ar)
+    blendMode(BLEND)
+  pop()  
 }
 
 function drawLayerThree(){
 
 }
 
+
+/*
 function mousePressed(){
   checkForSave()
-}
+}*/
