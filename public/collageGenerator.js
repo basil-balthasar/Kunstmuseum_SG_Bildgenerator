@@ -1,7 +1,7 @@
 //canvas infos
 let cnv
-let cnvX = 1080/2
-let cnvY = 1920/2
+let cnvX = 1080
+let cnvY = 1920
 
 let blendModes
 
@@ -11,9 +11,10 @@ function setup(){
     socket.on("data", getData);
 
     //create canvas
-    cnv = createCanvas(cnvX, cnvY)
+    cnv = createCanvas(windowWidth, windowHeight)
+    ar = windowHeight*windowWidth
     cnv.style('display', 'block')
-    cnv.position(windowWidth/2-cnvX/2, windowHeight/2-cnvY/2)
+    //cnv.position(windowWidth/2-cnvX/2, windowHeight/2-cnvY/2)
     background(250, 0, 200)
 
     //general setups
@@ -37,7 +38,7 @@ function draw(){
     image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.height/myBackground.scale/16*9, myBackground.image.height/myBackground.scale, COVER, CENTER, CENTER)
     //image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.width/myBackground.scale, myBackground.image.width/myBackground.scale*myBackground.ar, COVER, LEFT, TOP)
   }else{
-    background(255,255,255, 255)
+    //background(backgroundColor, 255)
   }
 
   //draw layers in order of Z depth
@@ -98,8 +99,6 @@ function drawLayerThree(){
 
 }
 
-
-/*
-function mousePressed(){
-  checkForSave()
-}*/
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight)
+}

@@ -14,7 +14,7 @@ const parser = new ReadlineParser({ delimeter: "\r\n" });
 //open serialport
 if(useSerial == true){
     const port = new SerialPort.SerialPort({
-        path: "/dev/cu.usbmodem141815901",
+        path: "/dev/cu.usbmodem141818101",
         baudRate: 9600,
         dataBits: 8,
         parity: "none",

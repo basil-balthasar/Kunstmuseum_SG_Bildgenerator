@@ -13,11 +13,17 @@ let joystickSpeed = 4
 let maxScale = 3
 let minScale = 1
 
+let lastBackgroundState = false
+
+let lastFrame = 0
+let lastFileName
+
+let ar
+
 //get data from io sockets
 function getData(data){
     const values = data.split(",")
 
-    backgroundColor = [255,255,255]
     //backgroundColor = [map(values[0], 0, 1023, 0, 255), map(values[0], 0, 1023, 0, 255), map(values[0], 0, 1023, 0, 255)]
 
     let layerValues = [values[38], values[40], values[39]]
@@ -47,6 +53,8 @@ function getData(data){
     
     
     //background values
+    
+
     if(values[10] == 1){
         myBackground.isOn = true
         myBackground.image = backgroundImages[round(map(values[38], 0, 1023, 0, backgroundImages.length-1))]
@@ -56,9 +64,15 @@ function getData(data){
         myBackground.position[0]-=backgroundMovement[0]*2*deltaTime
         myBackground.position[1]-=backgroundMovement[1]*2*deltaTime
 
-        myBackground.position[0] = constrain(myBackground.position[0], 0, myBackground.image.width-myBackground.image.height/myBackground.scale/16*9)
+        myBackground.position[0] = constrain(myBackground.position[0], 0, myBackground.image.width-myBackground.image.height/myBackground.scale/ar)
         myBackground.position[1] = constrain(myBackground.position[1], 0, myBackground.image.height-myBackground.image.height/myBackground.scale)
     }else myBackground.isOn = false;
+
+    if(lastBackgroundState!=myBackground.isOn && myBackground.isOn == false){
+        backgroundColor = [random(50, 255), random(60, 255), random(40, 255)]
+        lastBackgroundState = myBackground.isOn
+    }
+    
 
     //foreground values
     if(values[21] == 1){
@@ -70,7 +84,7 @@ function getData(data){
         foreground.position[0]-=foregroundMovement[0]*2*deltaTime
         foreground.position[1]-=foregroundMovement[1]*2*deltaTime
 
-        foreground.position[0] = constrain(foreground.position[0], 0, foreground.image.width-foreground.image.height/foreground.scale/16*9)
+        foreground.position[0] = constrain(foreground.position[0], 0, foreground.image.width-foreground.image.height/foreground.scale/ar)
         foreground.position[1] = constrain(foreground.position[1], 0, foreground.image.height-foreground.image.height/foreground.scale)
     }else foreground.isOn = false
 
@@ -114,10 +128,49 @@ function getData(data){
     }else layerTwo.isOn = false;
 
     //button => 19
+    let collageNumber = 0;
+    const currentFrame = values[19];
+
+    if (lastFrame != currentFrame) {
+        print("hi")
+        saveCollage()
+    }
+    lastFrame = currentFrame;
+
 }
 
 function joystickToPosition(joystick, position){
     let joystickInput = [parseInt(joystick[3])-parseInt(joystick[1]), parseInt(joystick[0])-parseInt(joystick[2])]
     position[0] = Math.min(Math.max(position[0]+=joystickInput[0]*joystickSpeed*deltaTime, 0), cnvX);
     position[1] = Math.min(Math.max(position[1]+=joystickInput[1]*joystickSpeed*deltaTime, 0), cnvY);
+}
+
+function saveCollage(){
+    var currentYear = year();
+        var currentMonth = month();
+        var currentDay = day();
+        var currentHour = hour();
+        var currentMinute = minute();
+        var currentSecond = second();
+
+        let fileName =
+        "Collage-" +
+        currentYear +
+        "-" +
+        nf(currentMonth, 2) +
+        "-" +
+        nf(currentDay, 2) +
+        "-"+
+        nf(currentHour, 2)+
+        "-" +
+        nf(currentMinute, 2) +
+        "-" +
+        nf(currentSecond, 2);
+
+        saveCanvas(fileName, "png")
+        lastFileName = fileName
+}
+
+function mousePressed(){
+    //saveCollage()
 }
