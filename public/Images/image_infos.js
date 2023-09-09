@@ -1,4 +1,4 @@
-let numberOfImages = [1, 0, 1, 1, 1]
+let numberOfImages = [5, 11, 2, 2, 0]
 
 //image arrays
 let backgroundImages = []
@@ -23,7 +23,7 @@ function ImageObject(isOn, image, position, scale, rotation, blendMode){
 //load images into arrays
 function preload(){
     for(let b = 0; b<numberOfImages[0]; b++){
-        backgroundImages[b] = loadImage("/Images/BG/"+(b).toString()+".jpeg")
+        backgroundImages[b] = loadImage("/Images/BG/"+(b).toString()+".png")
     }
     for(let f = 0; f<numberOfImages[1]; f++){
         foregroundImages[f] = loadImage("/Images/FG/"+(f).toString()+".png")

@@ -1,7 +1,7 @@
 //canvas infos
 let cnv
-let cnvX = 400
-let cnvY = 600
+let cnvX = 1080/2
+let cnvY = 1920/2
 
 let blendModes
 
@@ -18,7 +18,7 @@ function setup(){
 
     //general setups
     angleMode(DEGREES)
-    blendModes = [BLEND]
+    blendModes = [BLEND, DIFFERENCE, SCREEN, BURN]
     myBackground = new ImageObject(true, backgroundImages[0], [0,0], 1, 0)
     foreground = new ImageObject(false, foregroundImages[0], [0,0], 1, 0)
     layerOne = new ImageObject(true, layerOneImages[0], [300,300], 0.1, 45)
@@ -34,13 +34,14 @@ function draw(){
   clear()
   //background
   if(myBackground.isOn == true){
-    image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.width/myBackground.scale, myBackground.image.width/myBackground.scale*myBackground.ar, COVER, LEFT, TOP)
+    image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.height/myBackground.scale/16*9, myBackground.image.height/myBackground.scale, COVER, CENTER, CENTER)
+    //image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.width/myBackground.scale, myBackground.image.width/myBackground.scale*myBackground.ar, COVER, LEFT, TOP)
   }else{
-    background(backgroundColor, 255)
+    background(255,255,255, 255)
   }
 
   //draw layers in order of Z depth
-  for(let l = 0; l<4; l++){
+  for(let l = 0; l<6; l++){
     switch(layerZOrder[l]){
       case 0:
         if(foreground.isOn == true){
@@ -67,11 +68,15 @@ function draw(){
 }
 
 function drawFg(){
+  image(foreground.image, 0, 0, width, height, foreground.position[0], foreground.position[1], foreground.image.height/foreground.scale/16*9, foreground.image.height/foreground.scale, COVER, CENTER, CENTER)
+  //image(foreground.image, 0, 0, width, height, foreground.position[0], foreground.position[1], foreground.image.width/foreground.scale, foreground.image.width/foreground.scale*foreground.ar, COVER, CENTER, CENTER)
 }
 
 function drawLayerOne(){
   push()
-    blendMode(layerOne.blendMode)
+    if(layerOne.blendMode != undefined){
+      blendMode(layerOne.blendMode)
+    }
     translate(layerOne.position[0], layerOne.position[1])
     rotate(layerOne.rotation)
     image(layerOne.image, -layerOne.image.width*layerOne.scale/2, -layerOne.image.width*layerOne.scale*layerOne.ar/2, layerOne.image.width*layerOne.scale, layerOne.image.width*layerOne.scale*layerOne.ar)

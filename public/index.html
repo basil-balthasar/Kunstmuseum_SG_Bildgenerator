@@ -17,8 +17,74 @@
     <script src="collageGenerator.js"></script>
     <script src="https://openprocessing.org/openprocessing_sketch.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+    <script src="qrcode.min.js"></script>
     <!--StyleCSS-->
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <body></body>
+  <body>
+    <!--
+    <button onclick="showQRCode()">Show QR Code</button>
+
+    <div
+      id="qrcode"
+      style="padding: 30px; display: none; justify-content: center"
+    ></div>
+    <img style="display: none" id="recentImage" src="" alt="Recent Image" />
+
+    <script>
+      const qrcodeDiv = document.getElementById("qrcode");
+
+      function showQRCode() {
+        if (qrcodeDiv.innerHTML == "") {
+          const imagePath = "images";
+          const imageExtension = "png";
+
+          // Show the QR code div
+          qrcodeDiv.style.display = "block";
+
+          // Get the list of images in the folder
+          fetch(
+            `https://api.github.com/repos/lucabusby/QR-Testing/contents/${imagePath}`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              const images = data.filter((item) =>
+                item.name.endsWith(`.${imageExtension}`)
+              );
+              if (images.length > 0) {
+                // Get the most recent image URL
+                const mostRecentImage = images[images.length - 1];
+                const imageUrl = mostRecentImage.download_url;
+
+                // Set the image source
+                const imgElement = document.getElementById("recentImage");
+                imgElement.src = imageUrl;
+                console.log(imgElement);
+
+                generateQRCode(imageUrl);
+              }
+            });
+
+          // Hide the QR code after 5 seconds (5000 milliseconds)
+          setTimeout(() => {
+            qrcodeDiv.style.display = "none";
+            // Clear the contents of the qrcodeDiv
+            qrcodeDiv.innerHTML = "";
+          }, 5000);
+        }
+
+        function generateQRCode(imageLink) {
+          const qrcode = new QRCode(qrcodeDiv, {
+            //text: imageLink,
+            text: "www.youtube.com",
+            width: 400,
+            height: 400,
+            colorDark: "#000000",
+            colorLight: "#ffff",
+          });
+        }
+      }
+    </script>
+    -->
+  </body>
 </html>
