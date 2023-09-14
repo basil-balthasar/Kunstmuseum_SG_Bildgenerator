@@ -1,4 +1,4 @@
-let layerZOrder = [0, 1, 2, 3, 4, 5]
+let layerZOrder = [0, 1, 2, 9, 9, 9]
 
 //background values
 let backgroundColor = [200, 0, 255]
@@ -10,13 +10,10 @@ let layerTwo
 let layerThree
 
 let joystickSpeed = 4
-let maxScale = 3
-let minScale = 1
 
 let lastBackgroundState = false
 
 let lastFrame = 0
-let lastFileName
 
 let ar
 
@@ -28,33 +25,22 @@ function getData(data){
 
     let layerValues = [values[38], values[40], values[39]]
 
-    
     //layer z order
-    layerZOrder = [0,1,2,3,4,5]
-    for(let v = 0; v<3; v++){
-        if(490 < layerValues[v] < 510){
-            layerZOrder[v]+=1
-            layerZOrder[v+3] = 0
-        }
-        else if(320 < layerValues[v] < 350){
-            layerZOrder[v]+=1
-            layerZOrder[v+3] = 1
-        }
-        else if(650 < layerValues[v] < 690){
-            layerZOrder[v]+=1
-            layerZOrder[v+3] = 2
-        }
-        else if(380 < layerValues[v] < 420){
-            layerZOrder[v]+=1
-            layerZOrder[v+3] = 3
+    layerZOrder = [0, 1, 2, 9, 9, 9]
+    for(let c = 0; c < layerValues.length; c++){
+        if(150 < layerValues[c] && layerValues[c] < 250){
+            layerZOrder[c] = 9
+            layerZOrder[3] = c
+        }else if(250 < layerValues[c] && layerValues[c] < 350){
+            layerZOrder[c] = 9
+            layerZOrder[4] = c
+        }else if(350 < layerValues[c] && layerValues[c] < 450){
+            layerZOrder[c] = 9
+            layerZOrder[5] = c
         }
     }
     
-    
-    
     //background values
-    
-
     if(values[10] == 1){
         myBackground.isOn = true
         myBackground.image = backgroundImages[round(map(values[38], 0, 1023, 0, backgroundImages.length-1))]
@@ -168,7 +154,6 @@ function saveCollage(){
         nf(currentSecond, 2);
 
         saveCanvas(fileName, "png")
-        lastFileName = fileName
 }
 
 function mousePressed(){

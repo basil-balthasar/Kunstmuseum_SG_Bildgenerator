@@ -40,7 +40,30 @@ function draw(){
   }else{
     //background(backgroundColor, 255)
   }
+  
+    for(let l = 0; l < layerZOrder.length; l++){
+      switch(layerZOrder[l]){
+        case 0:
+          if(foreground.isOn == true){
+            drawFg()
+          }
+          break;
+        case 1:
+          if(layerOne.isOn == true){
+            drawLayerOne()
+          }
+          break;
+        case 2:
+          if(layerTwo.isOn == true){
+            drawLayerTwo()
+          }
+          break;
+        case 9:
+          break;              
+      }
+    }
 
+  /*
   //draw layers in order of Z depth
   for(let l = 0; l<6; l++){
     switch(layerZOrder[l]){
@@ -65,7 +88,7 @@ function draw(){
         }
         break;      
     }
-  }
+  }*/
 }
 
 function drawFg(){
