@@ -1,12 +1,10 @@
-fs = require("fs");
+let lastFileName
 
-let recentImage = document.getElementById("recentImage")
+function setup(){
+    createCanvas(windowWidth, windowHeight)
+}
 
-fs.watch("/Users/basil/Documents/Projekte_Arbeit/Kunstmuseum_St.Gallen/Vermittlungsraum/Kunstmuseum_SG_Bildgenerator/Kunstmuseum_SG_Bildgenerator/public/History/SavedImages", { persistent: true }, function (event, fileName) {
-
-    let recentImageFileName = localStorage.getItem("recentImageName")
-    if(recentImageFileName!=undefined){
-        recentImage.src="./SavedImages/"+fileName
-        console.log(fileName)
-    }
-});
+function draw(){
+    lastFileName = localStorage.getItem("recentImageName")
+    image("public/History/SavedImages"+lastFileName, 0, 0, width, height)
+}

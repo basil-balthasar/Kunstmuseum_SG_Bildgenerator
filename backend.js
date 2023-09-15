@@ -57,12 +57,11 @@ if(useSerial == true){
     });
 }
 
+/*
 fs.watch("./public/History/SavedImages", { persistent: true }, function (event, fileName) {
-    console.log(fileName)
-    /*
     let recentImageFileName = localStorage.getItem("recentImageName")
     if(recentImageFileName!=undefined){
         recentImage.src="./SavedImages/"+fileName
-    }*/
-});
+    }
+});*/
 
