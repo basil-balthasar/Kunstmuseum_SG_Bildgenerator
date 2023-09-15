@@ -12,5 +12,5 @@ function draw(){
 }
 
 function success(){
-    print("juhuu")
+    image(img, x, y, width, height)
 }
