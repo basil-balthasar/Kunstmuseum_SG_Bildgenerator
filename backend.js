@@ -5,6 +5,7 @@ let useSerial = true;
 var http = require('http');
 var express = require("express");
 var shell = require("shelljs")
+var fs = require('fs');
 
 //serialport requirements + parser setup
 const SerialPort = require("serialport");
@@ -56,4 +57,12 @@ if(useSerial == true){
     });
 }
 
+fs.watch("./public/History/SavedImages", { persistent: true }, function (event, fileName) {
+    console.log(fileName)
+    /*
+    let recentImageFileName = localStorage.getItem("recentImageName")
+    if(recentImageFileName!=undefined){
+        recentImage.src="./SavedImages/"+fileName
+    }*/
+});
 

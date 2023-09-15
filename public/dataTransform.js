@@ -159,7 +159,6 @@ function saveCollage(){
     
     //saveCanvas(fileName, "png")
     localStorage.setItem("recentImageName", fileName+".png")
-    print(localStorage.getItem("recentImageName"))
     
     /*
     if(qrScriptLoaded == true){
