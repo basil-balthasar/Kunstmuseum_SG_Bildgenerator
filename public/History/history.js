@@ -8,9 +8,9 @@ function setup(){
 
 function draw(){
     lastFileName = localStorage.getItem("recentImageName")
-    print(lastFileName)
-    img = loadImage("./SavedImages/"+lastFileName)
-    fill(255)
-    rect(10,10,10,10)
-    image(img, 0, 0, width, height)
+    img = loadImage("./SavedImages/"+lastFileName, success())
+}
+
+function success(){
+    print("juhuu")
 }
