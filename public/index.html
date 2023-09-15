@@ -56,8 +56,6 @@
                 item.name.endsWith(`.${imageExtension}`)
               );
               if (images.length > 0) {
-                // Get the most recent image URL
-                //const mostRecentImage = images[images.length - 1];
                 generateQRCode();
               }
             });
@@ -86,6 +84,8 @@
           });
         }
       }
+
+      qrScriptLoaded = true;
     </script>
   </body>
 </html>
