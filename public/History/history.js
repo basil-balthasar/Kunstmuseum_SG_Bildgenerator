@@ -1,4 +1,5 @@
 let lastFileName
+let img
 
 function setup(){
     createCanvas(windowWidth, windowHeight)
