@@ -135,7 +135,6 @@ function joystickToPosition(joystick, position){
     position[1] = Math.min(Math.max(position[1]+=joystickInput[1]*joystickSpeed*deltaTime, 0), cnvY);
 }
 
-/*
 function saveCollage(){
     var currentYear = year();
     var currentMonth = month();
@@ -161,13 +160,10 @@ function saveCollage(){
     //saveCanvas(fileName, "png")
     localStorage.setItem("recentImageName", fileName+".png")
     print(localStorage.getItem("recentImageName"))
-
-    shell.exec("git add .");
-    shell.exec('git commit -m "newCollage"');
-    shell.exec("git push origin main");
     
-
+    /*
     if(qrScriptLoaded == true){
         generateQRCode()
     }
-}*/
+    */
+}

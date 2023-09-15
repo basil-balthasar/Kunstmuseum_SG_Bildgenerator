@@ -9,7 +9,6 @@ function setup(){
     //setup io socket connection
     socket = io.connect("http://localhost:3000")
     socket.on("data", getData);
-    socket.on("save", saveCollage())
 
     //create canvas
     cnv = createCanvas(windowWidth, windowHeight)
@@ -63,38 +62,10 @@ function draw(){
           break;              
       }
     }
-
-  /*
-  //draw layers in order of Z depth
-  for(let l = 0; l<6; l++){
-    switch(layerZOrder[l]){
-      case 0:
-        if(foreground.isOn == true){
-          drawFg()
-        }
-        break;
-      case 1:
-        if(layerOne.isOn == true){
-          drawLayerOne()
-        }
-        break;
-      case 2:
-        if(layerTwo.isOn == true){
-          drawLayerTwo()
-        }
-        break;
-      case 3:
-        if(layerThree.isOn == true){
-          drawLayerThree()
-        }
-        break;      
-    }
-  }*/
 }
 
 function drawFg(){
   image(foreground.image, 0, 0, width, height, foreground.position[0], foreground.position[1], foreground.image.height/foreground.scale/16*9, foreground.image.height/foreground.scale, COVER, CENTER, CENTER)
-  //image(foreground.image, 0, 0, width, height, foreground.position[0], foreground.position[1], foreground.image.width/foreground.scale, foreground.image.width/foreground.scale*foreground.ar, COVER, CENTER, CENTER)
 }
 
 function drawLayerOne(){
@@ -121,8 +92,4 @@ function drawLayerTwo(){
 
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight)
-}
-
-function saveCollage(){
-  print("HI")
 }
