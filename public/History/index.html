@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recent Image</title>
-    <script src="https://openprocessing.org/openprocessing_sketch.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
     <script src="history.js"></script>
     <style>
       body {
@@ -14,5 +12,18 @@
       }
     </style>
   </head>
-  <body></body>
+  <body>
+    <img id="recentImage" src="" alt="recent image" />
+    <script>
+      let timerInSeconds = 0;
+
+      setInterval(() => {
+        timerInSeconds += 1;
+
+        if (timerInSeconds >= 3) {
+          window.location.reload();
+        }
+      }, 1000);
+    </script>
+  </body>
 </html>
