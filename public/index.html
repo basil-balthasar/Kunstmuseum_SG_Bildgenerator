@@ -39,6 +39,7 @@
 
       if (lastFrame !== currentFrame) {
         collageNumber++;
+        saveCanvas("Collage" + collageNumber, "png");
       }
 
       const lastFrame = currentFrame;
