@@ -1,3 +1,5 @@
+var shell = require("shelljs");
+
 let layerZOrder = [0, 1, 2, 9, 9, 9]
 
 //background values
@@ -16,6 +18,10 @@ let lastBackgroundState = false
 let lastFrame = 0
 
 let ar
+
+let fileName
+
+let qrScriptLoaded = false
 
 //get data from io sockets
 function getData(data){
@@ -118,8 +124,8 @@ function getData(data){
     const currentFrame = values[19];
 
     if (lastFrame != currentFrame) {
-        print("hi")
         saveCollage()
+        print("ups save")
     }
     lastFrame = currentFrame;
 
@@ -133,29 +139,40 @@ function joystickToPosition(joystick, position){
 
 function saveCollage(){
     var currentYear = year();
-        var currentMonth = month();
-        var currentDay = day();
-        var currentHour = hour();
-        var currentMinute = minute();
-        var currentSecond = second();
+    var currentMonth = month();
+    var currentDay = day();
+    var currentHour = hour();
+    var currentMinute = minute();
+    var currentSecond = second();
 
-        let fileName =
-        "Collage-" +
-        currentYear +
-        "-" +
-        nf(currentMonth, 2) +
-        "-" +
-        nf(currentDay, 2) +
-        "-"+
-        nf(currentHour, 2)+
-        "-" +
-        nf(currentMinute, 2) +
-        "-" +
-        nf(currentSecond, 2);
+    fileName =
+    "Collage-" +
+    currentYear +
+    "-" +
+    nf(currentMonth, 2) +
+    "-" +
+    nf(currentDay, 2) +
+    "-"+
+    nf(currentHour, 2)+
+    "-" +
+    nf(currentMinute, 2) +
+    "-" +
+    nf(currentSecond, 2);
+    
+    //saveCanvas(fileName, "png")
+    localStorage.setItem("recentImageName", fileName+".png")
 
-        saveCanvas(fileName, "png")
+    shell.exec("git add .");
+    shell.exec('git commit -m "newCollage"');
+    shell.exec("git push origin main");
+
+    if(qrScriptLoaded == true){
+        generateQRCode()
+    }
 }
 
-function mousePressed(){
-    //saveCollage()
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) {
+    saveCollage()
+  }
 }
