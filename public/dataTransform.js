@@ -124,7 +124,7 @@ function getData(data){
     const currentFrame = values[19];
 
     if (lastFrame != currentFrame) {
-        //saveCollage()
+        saveCollage()
     }
     lastFrame = currentFrame;
 }
