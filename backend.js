@@ -48,20 +48,19 @@ if(useSerial == true){
         const bvalues = data.split(",")
         const currentFrame = bvalues[19];
 
+        /*
         if (lastFrame != currentFrame) {
             shell.exec("git add .");
             shell.exec('git commit -m "newCollage"');
             shell.exec("git push origin main");
         }
-        lastFrame = currentFrame;
+        lastFrame = currentFrame;*/
     });
 }
 
-/*
 fs.watch("./public/History/SavedImages", { persistent: true }, function (event, fileName) {
-    let recentImageFileName = localStorage.getItem("recentImageName")
-    if(recentImageFileName!=undefined){
-        recentImage.src="./SavedImages/"+fileName
-    }
-});*/
+    shell.exec("git add .");
+            shell.exec('git commit -m "newCollage"');
+            shell.exec("git push origin main");
+});
 
