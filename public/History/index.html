@@ -16,6 +16,10 @@
     <img id="recentImage" src="" alt="recent image" />
     <script>
       let timerInSeconds = 0;
+      let recentImage = localStorage.getItem("recentImageName");
+      let imageItem = document.getElementById("recentImage");
+
+      imageItem.src = "./SavedImages/" + recentImage;
 
       setInterval(() => {
         timerInSeconds += 1;
