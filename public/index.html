@@ -60,7 +60,7 @@
                 const mostRecentImage = images[images.length - 1];
                 const imageUrl = mostRecentImage.download_url;
 
-                generateQRCode(imageUrl);
+                generateQRCode();
               }
             });
 
@@ -69,7 +69,7 @@
             qrcodeDiv.style.display = "none";
             // Clear the contents of the qrcodeDiv
             qrcodeDiv.innerHTML = "";
-          }, 15000);
+          }, 10000);
         }
         let recentImageName = localStorage.getItem("recentImageName");
 
