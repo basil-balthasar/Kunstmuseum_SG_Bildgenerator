@@ -5,6 +5,8 @@ function setup(){
 }
 
 function draw(){
+    
     lastFileName = localStorage.getItem("recentImageName")
-    image("public/History/SavedImages"+lastFileName, 0, 0, width, height)
+    img = loadImage("public/History/SavedImages"+lastFileName)
+    image(img, 0, 0, width, height)
 }
