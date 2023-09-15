@@ -157,7 +157,7 @@ function saveCollage(){
     "-" +
     nf(currentSecond, 2);
     
-    //saveCanvas(fileName, "png")
+    saveCanvas(fileName, "png")
     localStorage.setItem("recentImageName", fileName+".png")
     
     /*
