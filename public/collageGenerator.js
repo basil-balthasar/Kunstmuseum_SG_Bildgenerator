@@ -9,6 +9,7 @@ function setup(){
     //setup io socket connection
     socket = io.connect("http://localhost:3000")
     socket.on("data", getData);
+    socket.on("save", saveCollage())
 
     //create canvas
     cnv = createCanvas(windowWidth, windowHeight)
@@ -118,10 +119,10 @@ function drawLayerTwo(){
   pop()  
 }
 
-function drawLayerThree(){
-
-}
-
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight)
+}
+
+function saveCollage(){
+  print("HI")
 }

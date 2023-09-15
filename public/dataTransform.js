@@ -1,5 +1,3 @@
-var shell = require("shelljs");
-
 let layerZOrder = [0, 1, 2, 9, 9, 9]
 
 //background values
@@ -19,7 +17,7 @@ let lastFrame = 0
 
 let ar
 
-let fileName
+//let fileName
 
 let qrScriptLoaded = false
 
@@ -120,15 +118,15 @@ function getData(data){
     }else layerTwo.isOn = false;
 
     //button => 19
+
+    
     let collageNumber = 0;
     const currentFrame = values[19];
 
     if (lastFrame != currentFrame) {
-        saveCollage()
-        print("ups save")
+        //saveCollage()
     }
     lastFrame = currentFrame;
-
 }
 
 function joystickToPosition(joystick, position){
@@ -137,6 +135,7 @@ function joystickToPosition(joystick, position){
     position[1] = Math.min(Math.max(position[1]+=joystickInput[1]*joystickSpeed*deltaTime, 0), cnvY);
 }
 
+/*
 function saveCollage(){
     var currentYear = year();
     var currentMonth = month();
@@ -161,18 +160,14 @@ function saveCollage(){
     
     //saveCanvas(fileName, "png")
     localStorage.setItem("recentImageName", fileName+".png")
+    print(localStorage.getItem("recentImageName"))
 
     shell.exec("git add .");
     shell.exec('git commit -m "newCollage"');
     shell.exec("git push origin main");
+    
 
     if(qrScriptLoaded == true){
         generateQRCode()
     }
-}
-
-function keyPressed() {
-  if (keyCode === LEFT_ARROW) {
-    saveCollage()
-  }
-}
+}*/
