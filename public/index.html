@@ -52,7 +52,23 @@
 
           // Get the list of images in the folder
 
-          generateQRCode();
+          fetch(
+            `https://api.github.com/repos/lucabusby/QR-Testing/contents/${imagePath}`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              const images = data.filter((item) =>
+                item.name.endsWith(`.${imageExtension}`)
+              );
+              if (images.length > 0) {
+                // Get the most recent image URL
+                const mostRecentImage = images[images.length - 1];
+                const imageUrl = mostRecentImage.download_url;
+
+                generateQRCode();
+              }
+            });*/
+
           // Hide the QR code after 5 seconds (5000 milliseconds)
           setTimeout(() => {
             qrcodeDiv.style.display = "none";
