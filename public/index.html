@@ -22,7 +22,6 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <!--
     <button onclick="showQRCode()">Show QR Code</button>
 
     <div
@@ -79,8 +78,7 @@
 
         let imageUrl =
           "https://raw.githubusercontent.com/basil-balthasar/Kunstmuseum_SG_Bildgenerator/main/public/History/SavedImages/" +
-          filename +
-          ".png";
+          localStorage.getItem("recentImageName");
 
         function generateQRCode(imageUrl) {
           const qrcode = new QRCode(qrcodeDiv, {
@@ -93,6 +91,6 @@
           });
         }
       }
-    </script>-->
+    </script>
   </body>
 </html>
