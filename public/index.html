@@ -51,6 +51,7 @@
           qrcodeDiv.style.display = "block";
 
           // Get the list of images in the folder
+          /*
           fetch(
             `https://api.github.com/repos/lucabusby/QR-Testing/contents/${imagePath}`
           )
@@ -66,7 +67,7 @@
 
                 generateQRCode(imageUrl);
               }
-            });
+            });*/
 
           // Hide the QR code after 5 seconds (5000 milliseconds)
           setTimeout(() => {
@@ -75,12 +76,13 @@
             qrcodeDiv.innerHTML = "";
           }, 15000);
         }
+        let recentImageName = localStorage.getItem("recentImageName");
 
         let imageUrl =
           "https://raw.githubusercontent.com/basil-balthasar/Kunstmuseum_SG_Bildgenerator/main/public/History/SavedImages/" +
-          localStorage.getItem("recentImageName");
+          recentImageName;
 
-        function generateQRCode(imageUrl) {
+        function generateQRCode() {
           const qrcode = new QRCode(qrcodeDiv, {
             //text: imageLink,
             text: imageUrl,
