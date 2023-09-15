@@ -13,5 +13,5 @@ function draw(){
 }
 
 function success(){
-    image(img, 0, 0, windowWidth, windowHeight)
+    image(img, 0, 0, width, height)
 }
