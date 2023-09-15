@@ -35,12 +35,13 @@
       let collageNumber = 0;
       const currentFrame = 1;
 
-      if (lastQRFrame !== currentFrame) {
+      let imageUrl = "githaub.raw.link.to.folder" + filename;
+
+      if (lastFrame !== currentFrame) {
         collageNumber++;
-        saveCanvas("Collage" + collageNumber, "png");
       }
 
-      const lastQRFrame = currentFrame;
+      const lastFrame = currentFrame;
 
       function showQRCode() {
         if (qrcodeDiv.innerHTML == "") {
@@ -50,42 +51,20 @@
           // Show the QR code div
           qrcodeDiv.style.display = "block";
 
-          // Get the list of images in the folder
-
-          fetch(
-            `https://api.github.com/repos/lucabusby/QR-Testing/contents/${imagePath}`
-          )
-            .then((response) => response.json())
-            .then((data) => {
-              const images = data.filter((item) =>
-                item.name.endsWith(`.${imageExtension}`)
-              );
-              if (images.length > 0) {
-                // Get the most recent image URL
-                const mostRecentImage = images[images.length - 1];
-                const imageUrl = mostRecentImage.download_url;
-
-                generateQRCode();
-              }
-            });*/
+          generateQRCode();
 
           // Hide the QR code after 5 seconds (5000 milliseconds)
           setTimeout(() => {
             qrcodeDiv.style.display = "none";
             // Clear the contents of the qrcodeDiv
             qrcodeDiv.innerHTML = "";
-          }, 15000);
+          }, 5000);
         }
-        let recentImageName = localStorage.getItem("recentImageName");
 
-        let imageUrl =
-          "https://raw.githubusercontent.com/basil-balthasar/Kunstmuseum_SG_Bildgenerator/main/public/History/SavedImages/" +
-          recentImageName;
-
-        function generateQRCode() {
+        function generateQRCode(imageUrl) {
           const qrcode = new QRCode(qrcodeDiv, {
             //text: imageLink,
-            text: imageUrl,
+            text: "www.youtube.com",
             width: 400,
             height: 400,
             colorDark: "#000000",
