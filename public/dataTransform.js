@@ -118,8 +118,6 @@ function getData(data){
     }else layerTwo.isOn = false;
 
     //button => 19
-
-    
     let collageNumber = 0;
     const currentFrame = values[19];
 
