@@ -60,7 +60,7 @@ if(useSerial == true){
 
 fs.watch("./public/History/SavedImages", { persistent: true }, function (event, fileName) {
     shell.exec("git add .");
-            shell.exec('git diff--exit-code || git commit -m "newCollage"');
+            shell.exec('git diff --quiet && git diff --staged --quiet|| git commit -m "newCollage"');
             shell.exec("git push origin main");
 });
 
