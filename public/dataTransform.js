@@ -27,7 +27,7 @@ function getData(data){
 
     //backgroundColor = [map(values[0], 0, 1023, 0, 255), map(values[0], 0, 1023, 0, 255), map(values[0], 0, 1023, 0, 255)]
 
-    let layerValues = [values[38], values[40], values[39]]
+    let layerValues = [values[39], values[41], values[40]]
 
     //layer z order
     layerZOrder = [0, 1, 2, 9, 9, 9]
@@ -58,8 +58,8 @@ function getData(data){
         myBackground.position[1] = constrain(myBackground.position[1], 0, myBackground.image.height-myBackground.image.height/myBackground.scale)
     }else myBackground.isOn = false;
 
-    if(lastBackgroundState!=myBackground.isOn && myBackground.isOn == false){
-        backgroundColor = [random(50, 255), random(60, 255), random(40, 255)]
+    if(lastBackgroundState!=myBackground.isOn){
+        backgroundColor = [round(random(50, 255)), round(random(60, 255)), round(random(40, 255))]
         lastBackgroundState = myBackground.isOn
     }
     

@@ -38,7 +38,7 @@ function draw(){
     image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.height/myBackground.scale/16*9, myBackground.image.height/myBackground.scale, COVER, CENTER, CENTER)
     //image(myBackground.image, 0, 0, width, height, myBackground.position[0], myBackground.position[1], myBackground.image.width/myBackground.scale, myBackground.image.width/myBackground.scale*myBackground.ar, COVER, LEFT, TOP)
   }else{
-    //background(backgroundColor, 255)
+    background(backgroundColor, 255)
   }
   
     for(let l = 0; l < layerZOrder.length; l++){
