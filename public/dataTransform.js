@@ -32,13 +32,13 @@ function getData(data){
     //layer z order
     layerZOrder = [0, 1, 2, 9, 9, 9]
     for(let c = 0; c < layerValues.length; c++){
-        if(150 < layerValues[c] && layerValues[c] < 250){
+        if(315 < layerValues[c] && layerValues[c] < 355){
             layerZOrder[c] = 9
             layerZOrder[3] = c
-        }else if(250 < layerValues[c] && layerValues[c] < 350){
+        }else if(652 < layerValues[c] && layerValues[c] < 692){
             layerZOrder[c] = 9
             layerZOrder[4] = c
-        }else if(350 < layerValues[c] && layerValues[c] < 450){
+        }else if(380 < layerValues[c] && layerValues[c] < 420){
             layerZOrder[c] = 9
             layerZOrder[5] = c
         }
