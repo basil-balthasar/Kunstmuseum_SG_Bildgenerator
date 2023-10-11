@@ -16,7 +16,7 @@ const parser = new ReadlineParser({ delimeter: "\r\n" });
 //open serialport
 if(useSerial == true){
     const port = new SerialPort.SerialPort({
-        path: "/dev/cu.usbmodem141818101",
+        path: "/dev/cu.usbmodem139735901",
         baudRate: 9600,
         dataBits: 8,
         parity: "none",
@@ -47,20 +47,14 @@ if(useSerial == true){
 
         const bvalues = data.split(",")
         const currentFrame = bvalues[19];
-
-        /*
-        if (lastFrame != currentFrame) {
-            shell.exec("git add .");
-            shell.exec('git commit -m "newCollage"');
-            shell.exec("git push origin main");
-        }
-        lastFrame = currentFrame;*/
     });
 }
 
+
+//push collage to git
 fs.watch("./public/History/SavedImages", { persistent: true }, function (event, fileName) {
     shell.exec("git add .");
-            shell.exec('git commit -m "newCollage"');
-            shell.exec("git push origin main");
+    shell.exec('git commit -m "newCollage"');
+    shell.exec("git push origin main");
 });
 
