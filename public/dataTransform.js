@@ -27,18 +27,18 @@ function getData(data){
 
     //backgroundColor = [map(values[0], 0, 1023, 0, 255), map(values[0], 0, 1023, 0, 255), map(values[0], 0, 1023, 0, 255)]
 
-    let layerValues = [values[38], values[40], values[39]]
+    let layerValues = [values[39], values[41], values[40]]
 
     //layer z order
     layerZOrder = [0, 1, 2, 9, 9, 9]
     for(let c = 0; c < layerValues.length; c++){
-        if(150 < layerValues[c] && layerValues[c] < 250){
+        if(315 < layerValues[c] && layerValues[c] < 355){
             layerZOrder[c] = 9
             layerZOrder[3] = c
-        }else if(250 < layerValues[c] && layerValues[c] < 350){
+        }else if(652 < layerValues[c] && layerValues[c] < 692){
             layerZOrder[c] = 9
             layerZOrder[4] = c
-        }else if(350 < layerValues[c] && layerValues[c] < 450){
+        }else if(380 < layerValues[c] && layerValues[c] < 420){
             layerZOrder[c] = 9
             layerZOrder[5] = c
         }
@@ -58,8 +58,8 @@ function getData(data){
         myBackground.position[1] = constrain(myBackground.position[1], 0, myBackground.image.height-myBackground.image.height/myBackground.scale)
     }else myBackground.isOn = false;
 
-    if(lastBackgroundState!=myBackground.isOn && myBackground.isOn == false){
-        backgroundColor = [random(50, 255), random(60, 255), random(40, 255)]
+    if(lastBackgroundState!=myBackground.isOn){
+        backgroundColor = [round(random(50, 255)), round(random(60, 255)), round(random(40, 255))]
         lastBackgroundState = myBackground.isOn
     }
     
